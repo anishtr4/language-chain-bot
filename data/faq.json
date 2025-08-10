@@ -1,0 +1,128 @@
+[
+  {
+    "id": "1754843523730-url-0",
+    "title": "What do I do if I enrolled into a service, but it is not sho",
+    "question": "What do I do if I enrolled into a service, but it is not showing up in my personalized dashboard?",
+    "answer": "If you have recently enrolled, please retry after 1 hour. If you've enrolled more than 1 hour ago, please call us at 1-844-REPATHA (1-844-737-2842) for live support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-1",
+    "title": "What do I do if there is a mismatch in my user information? ",
+    "question": "What do I do if there is a mismatch in my user information? How can I change it?",
+    "answer": "Please call us at 1-844-Repatha (1-844-737-2842) for live support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-2",
+    "title": "How can I enroll into an additional service?",
+    "question": "How can I enroll into an additional service?",
+    "answer": "Please select the new services you want to enroll in and click \"Enroll for New Resources.\" Follow the screen prompts to complete enrollment.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-3",
+    "title": "How can I unenroll from a service?",
+    "question": "How can I unenroll from a service?",
+    "answer": "Currently an unenroll option is not available through this dashboard, please contact us at 1-844-Repatha (1-844-737-2842) for live support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-4",
+    "title": "My reminder dates are incorrect; how can I update it?",
+    "question": "My reminder dates are incorrect; how can I update it?",
+    "answer": "Updating reminder dates is not currently available through this dashboard. Please call us at 1-844-Repatha (1-844-737-2842) for live support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-5",
+    "title": "Do I have to provide my last name and DOB (Date of Birth) ev",
+    "question": "Do I have to provide my last name and DOB (Date of Birth) every time?",
+    "answer": "In order to keep your personal data safe, we ask that you provide your Last name and DOB each time you access your personalized dashboard.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-6",
+    "title": "I am unable to print my Repatha® Co-pay Card, what can I do?",
+    "question": "I am unable to print my Repatha® Co-pay Card, what can I do?",
+    "answer": "On the print module, select your printer if not selected already. Please ensure that your printer is connected to your device.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-7",
+    "title": "What should I do if I encounter technical issues on my perso",
+    "question": "What should I do if I encounter technical issues on my personalized dashboard?",
+    "answer": "If you experience any technical issues, please call us at 1-844-Repatha (1-844-737-2842) for live support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-8",
+    "title": "Is my personal and medical information secure on my personal",
+    "question": "Is my personal and medical information secure on my personalized dashboard?",
+    "answer": "Yes, your privacy and security are our top priorities. We use advanced encryption and follow strict data protection regulations to ensure that your personal and medical information is secure.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-9",
+    "title": "Will my doctor’s office have access to this information?",
+    "question": "Will my doctor’s office have access to this information?",
+    "answer": "Your doctor’s office will not have access to this information. However, you can choose to share any relevant information with them directly.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-10",
+    "title": "What information is available via my personalized dashboard?",
+    "question": "What information is available via my personalized dashboard?",
+    "answer": "If you enrolled into Amgen SupportPlus you can access your Patient Support Services, like the Repatha Co-Pay program, Amgen® Nurse Partner, and Injection Reminders. You can also choose to enroll in additional services such as the sharps program.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-11",
+    "title": "If I have questions regarding the Repatha® Co-Pay Card or Am",
+    "question": "If I have questions regarding the Repatha® Co-Pay Card or Amgen® Nurse Partners, how do I connect with live support?",
+    "answer": "Please call us at 1-844-REPATHA (1-844-737-2842) for support.",
+    "tags": []
+  },
+  {
+    "id": "1754843523730-url-12",
+    "title": "Allow spouse/caregiver access",
+    "question": "Can you also allow access to my personalized dashboard to my spouse or caregiver?",
+    "answer": "Refer to the SupportPlus FAQ page for guidance on caregiver or proxy access options.",
+    "tags": ["https://www.repatha.com/myamgensupportplus/faq"]
+  },
+  {
+    "id": "repatha-isi-1",
+    "title": "Who should not use Repatha?",
+    "question": "Who should not use Repatha (evolocumab)?",
+    "answer": "Do not use Repatha if you are allergic to evolocumab or to any of the ingredients in Repatha. Seek emergency help for signs of a serious allergic reaction (e.g., trouble breathing or swallowing, hives, rash or itching, swelling of the face, lips, tongue, throat, or arms).",
+    "tags": ["https://www.repatha.com/myamgensupportplus/faq", "https://www.pi.amgen.com/-/media/Project/Amgen/Repository/pi-amgen-com/Repatha/repatha_ppi_pt_english.pdf"]
+  },
+  {
+    "id": "repatha-isi-2",
+    "title": "What should I tell my healthcare provider before using Repatha?",
+    "question": "What should I tell my healthcare provider before using Repatha?",
+    "answer": "Tell your healthcare provider about all your medical conditions and all the medicines, vitamins, and herbal supplements you take. Mention if you are allergic to rubber or latex, are pregnant or plan to become pregnant, or are breastfeeding or plan to breastfeed.",
+    "tags": ["https://www.repatha.com/myamgensupportplus/faq"]
+  },
+  {
+    "id": "repatha-isi-3",
+    "title": "Does Repatha contain latex?",
+    "question": "Does Repatha contain latex?",
+    "answer": "Some Repatha presentations (prefilled single-dose SureClick autoinjectors and prefilled single-dose syringes) may contain dry natural rubber (a derivative of latex) in the needle cover; others are not made with natural rubber latex. The carton and \"Instructions for Use\" indicate whether the device contains dry natural rubber. The single-dose Pushtronex system is not made with natural rubber latex.",
+    "tags": ["https://www.repatha.com/myamgensupportplus/faq"]
+  },
+  {
+    "id": "repatha-isi-4",
+    "title": "Possible side effects of Repatha",
+    "question": "What are the possible side effects of Repatha?",
+    "answer": "Serious allergic reactions can occur. Stop taking Repatha and seek help if you have trouble breathing or swallowing, hives, rash or itching, or swelling of the face, lips, tongue, throat, or arms. The most common side effects include: runny nose, sore throat, symptoms of the common cold, flu or flu-like symptoms, back pain, high blood sugar levels (diabetes), and redness, pain, or bruising at the injection site.",
+    "tags": ["https://www.repatha.com/myamgensupportplus/faq"]
+  },
+  {
+    "id": "1754843523730-url-13",
+    "title": "Can you also allow access to my personalized dashboard to my",
+    "question": "Can you also allow access to my personalized dashboard to my spouse or caregiver?",
+    "answer": "Your spouse or caregiver will not have access to this information. However, you can choose to share any relevant information with them directly.",
+    "tags": []
+  }
+]

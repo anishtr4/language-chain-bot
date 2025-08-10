@@ -1,0 +1,304 @@
+/* Floating chat widget */
+.bfb-wrap { position: fixed; bottom: 20px; right: 20px; }
+.bfb-launcher {
+  width: 68px; 
+  height: 68px; 
+  border-radius: 22px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border: none;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.15), 0 3px 8px rgba(2,6,23,0.1);
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.bfb-launcher:hover { 
+  transform: translateY(-2px) scale(1.02); 
+  box-shadow: 0 12px 30px rgba(2,6,23,0.2), 0 4px 12px rgba(2,6,23,0.15);
+}
+.bfb-launcher:active { 
+  transform: scale(0.96); 
+}
+.bfb-launcher:focus-visible { 
+  outline: 3px solid #3b82f6; 
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(59,130,246,0.2);
+}
+
+.bfb-heart {
+  width:48px; height:48px; position:relative; transform: rotate(-45deg);
+  background: linear-gradient(135deg, var(--bfb-primary, #2563eb), #ef4444);
+  border-radius: 12px;
+}
+.bfb-heart::before,
+.bfb-heart::after {
+  content:""; position:absolute; width:48px; height:48px;
+  background: inherit; border-radius:50%;
+}
+.bfb-heart::before { top:-24px; left:0; }
+.bfb-heart::after { left:24px; top:0; }
+.bfb-face-overlay { position:absolute; inset:0; transform: rotate(45deg); display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.bfb-face-overlay .eye { width:7px; height:7px; background:#0f172a; border-radius:50%; position:absolute; top:16px; }
+.bfb-face-overlay .eye.left { left:14px; }
+.bfb-face-overlay .eye.right { right:14px; }
+.bfb-face-overlay .mouth { width:16px; height:8px; border-radius:0 0 10px 10px; background:#0f172a; position:absolute; bottom:12px; transform-origin: top center; }
+
+/* SVG heart wrapper (for clearer, consistent shape) */
+.bfb-heart-wrap { position: relative; width:66px; height:66px; transform: translateY(-2px); }
+.bfb-avatar .bfb-heart-wrap { width:92px; height:92px; position:absolute; left:-30px; top:-44px; animation: bfb-float 3s ease-in-out infinite; z-index: 5; pointer-events: auto; }
+.bfb-avatar .bfb-heart-wrap::after { content:""; display: none; }
+.bfb-heart-svg { width:100%; height:100%; display:block; filter: saturate(1.35) contrast(1.08) drop-shadow(0 10px 18px rgba(0,0,0,0.5)) drop-shadow(0 3px 6px rgba(0,0,0,0.35)); transform: translateZ(0); }
+/* rely on inline fills (url(#bfbHeartGradH/L)) defined in each SVG */
+/* explicit fills for robustness across browsers */
+.bfb-header .heart-base { fill: url(#bfbHeartGradH) !important; }
+.bfb-header .heart-vignette { fill: url(#bfbVignetteH) !important; }
+.bfb-launcher .heart-base { fill: url(#bfbHeartGradL) !important; }
+.bfb-launcher .heart-vignette { fill: url(#bfbVignetteL) !important; }
+.bfb-heart-wrap svg { position: relative; z-index: 0; }
+.bfb-heart-wrap .bfb-face-overlay { z-index: 1; }
+.bfb-heart-wrap .bfb-face-overlay { position:absolute; inset:0; transform: translateX(-2%); display:block; }
+.bfb-heart-wrap .eye { position:absolute; width:7.6%; height:8.2%; background:#ffffff; border:2px solid #0b1020; border-radius:50%; top:29.8%; box-shadow: inset 0 0 0 2px rgba(0,0,0,0.05); }
+.bfb-heart-wrap .eye.left { left:30%; }
+.bfb-heart-wrap .eye.right { right:30%; }
+.bfb-heart-wrap .eye::before { content:""; position:absolute; width:44%; height:48%; top:26%; left:28%; background:#0b1020; border-radius:50%; box-shadow: 0 0 0 2px rgba(0,0,0,0.02) inset; }
+.bfb-heart-wrap .eye::after { content:""; position:absolute; width:18%; height:18%; top:20%; left:24%; background: rgba(255,255,255,0.95); border-radius:50%; filter: blur(0.2px); }
+/* keep pupils within eyes and soften tracking */
+.bfb-heart-wrap .eye { overflow: hidden; }
+.bfb-heart-wrap.look .eye::before { transition: transform 120ms ease-out; }
+/* interactive pupil shift */
+.bfb-heart-wrap.look .eye::before { transform: translate(var(--eye-x, 0px), var(--eye-y, 0px)); transition: transform 80ms linear; }
+.bfb-heart-wrap .brow { position:absolute; width:13.5%; height:1.4%; background: linear-gradient(180deg, #1b2033 0%, #0b1020 100%); top:27.2%; border-radius:50px; opacity:0.96; box-shadow: 0 0.5px 0 rgba(255,255,255,0.12) inset, 0 -0.5px 0 rgba(0,0,0,0.25) inset; transform-origin: center; }
+.bfb-heart-wrap .brow.left { left:22%; transform: rotate(-9deg); }
+.bfb-heart-wrap .brow.right { right:22%; transform: rotate(9deg); }
+.bfb-heart-wrap .bfb-face-overlay::before,
+.bfb-heart-wrap .bfb-face-overlay::after { content:""; position:absolute; width:10%; height:10%; background: rgba(255, 99, 132, 0.25); border-radius:50%; bottom:30%; }
+.bfb-heart-wrap .bfb-face-overlay::before { left:22%; }
+.bfb-heart-wrap .bfb-face-overlay::after { right:22%; }
+.bfb-heart-wrap .mouth { position:absolute; width:19.5%; height:13%; left:50%; bottom:29.8%; transform: translateX(-50%); background:#0c0f1c; border-radius: 0 0 14px 14px; transform-origin: top center; overflow:hidden; box-shadow: inset 0 -6px 10px rgba(0,0,0,0.35), inset 0 6px 10px rgba(255,255,255,0.12), 0 0.5px 0 rgba(255,255,255,0.28); }
+.bfb-heart-wrap .mouth::before { content:""; position:absolute; left:14%; right:14%; top:0; height:26%; background:#f5f7fb; border-bottom-left-radius:8px; border-bottom-right-radius:8px; box-shadow: 0 1px 0 rgba(0,0,0,0.2) inset; }
+.bfb-heart-wrap .mouth::after { content:""; position:absolute; left:22%; right:22%; bottom:0; height:16%; background:#f5f7fb; border-top-left-radius:8px; border-top-right-radius:8px; transform-origin: bottom center; transform: scaleY(0); box-shadow: 0 -1px 0 rgba(0,0,0,0.2) inset; }
+.bfb-heart-wrap .tongue { position:absolute; left:50%; bottom:1px; transform: translateX(-50%); width:82%; height:72%; background: radial-gradient(ellipse at 50% 28%, #ff6b81 0%, #d13b50 55%, #8f1a2e 100%); border-top-left-radius: 40% 32%; border-top-right-radius: 40% 32%; transform-origin: bottom center; box-shadow: inset 0 6px 10px rgba(0,0,0,0.25); z-index: 1; }
+
+/* idle blink */
+@keyframes bfb-blink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+.bfb-face-overlay .eye { animation: bfb-blink 3.5s infinite; }
+
+/* idle micro animations (eyes glance, brows bounce, smile pulse) */
+@keyframes bfb-eye-look { 0%,15% { transform: translateX(0); } 25%,35% { transform: translateX(-1px); } 50%,60% { transform: translateX(1px); } 80%,100% { transform: translateX(0); } }
+@keyframes bfb-brow-bounce { 0%,100% { transform: translateY(0) rotate(var(--brow-rot, 0deg)); } 50% { transform: translateY(-1px) rotate(calc(var(--brow-rot, 0deg) * 1.1)); } }
+@keyframes bfb-smile-pulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.03); } }
+.bfb-heart-wrap .eye.left { animation: bfb-blink 3.8s infinite, bfb-eye-look 6s infinite ease-in-out; }
+.bfb-heart-wrap .eye.right { animation: bfb-blink 3.2s infinite, bfb-eye-look 7s infinite ease-in-out; }
+.bfb-heart-wrap .brow.left { --brow-rot: -8deg; animation: bfb-brow-bounce 5.5s infinite ease-in-out; }
+.bfb-heart-wrap .brow.right { --brow-rot: 8deg; animation: bfb-brow-bounce 5.2s infinite ease-in-out; }
+.bfb-heart-wrap .mouth { animation: bfb-smile-pulse 5s infinite ease-in-out; }
+
+/* talking state */
+.bfb-launcher.talking .mouth, .bfb-header.talking .mouth { animation: bfb-talk var(--talk-dur, 0.46s) infinite cubic-bezier(.25,.7,.3,1) alternate; }
+.bfb-launcher.talking .mouth::after, .bfb-header.talking .mouth::after { animation: bfb-lower-teeth var(--talk-dur, 0.46s) infinite cubic-bezier(.25,.7,.3,1) alternate; }
+.bfb-launcher.talking .mouth .tongue, .bfb-header.talking .mouth .tongue { animation: bfb-tongue var(--talk-dur, 0.46s) infinite cubic-bezier(.25,.7,.3,1) alternate; }
+@keyframes bfb-talk {
+  /* closed */
+  0% { transform: translateX(-50%) translateY(0) scaleY(0.74) scaleX(0.95) skewX(0deg); }
+  /* small open (consonant) */
+  12% { transform: translateX(-50%) translateY(0.35px) scaleY(0.9) scaleX(1.10) skewX(-0.4deg); }
+  /* round 'O' */
+  36% { transform: translateX(-50%) translateY(1.4px) scaleY(1.32) scaleX(1.20) skewX(0.2deg); }
+  44% { transform: translateX(-50%) translateY(1.4px) scaleY(1.32) scaleX(1.20) skewX(0.2deg); } /* brief hold */
+  /* tall 'A' with jaw drop */
+  66% { transform: translateX(-50%) translateY(1.9px) scaleY(1.42) scaleX(1.10) skewX(-0.3deg); }
+  /* mid close */
+  84% { transform: translateX(-50%) translateY(0.35px) scaleY(1.00) scaleX(1.08) skewX(0.1deg); }
+  /* near closed */
+  100% { transform: translateX(-50%) translateY(0) scaleY(0.82) scaleX(0.96) skewX(0deg); }
+}
+@keyframes bfb-lower-teeth {
+  0% { transform: scaleY(0); }
+  12% { transform: scaleY(0.54); }
+  36% { transform: scaleY(0.98); }
+  44% { transform: scaleY(0.92); }
+  66% { transform: scaleY(1.12); }
+  84% { transform: scaleY(0.38); }
+  100% { transform: scaleY(0); }
+}
+@keyframes bfb-tongue {
+  0% { transform: translateX(-50%) scaleY(0); }
+  12% { transform: translateX(-50%) scaleY(0.42); }
+  36% { transform: translateX(-50%) scaleY(0.82); }
+  44% { transform: translateX(-50%) scaleY(0.68); }
+  66% { transform: translateX(-50%) scaleY(1.00); }
+  84% { transform: translateX(-50%) scaleY(0.34); }
+  100% { transform: translateX(-50%) scaleY(0); }
+}
+
+/* talking head bob/tilt */
+@keyframes bfb-head-bob-talk {
+  0% { transform: translateY(0) rotateZ(0deg); }
+  25% { transform: translateY(0.4px) rotateZ(-0.3deg); }
+  50% { transform: translateY(0.7px) rotateZ(0deg); }
+  75% { transform: translateY(0.4px) rotateZ(0.3deg); }
+  100% { transform: translateY(0) rotateZ(0deg); }
+}
+.bfb-launcher.talking .bfb-heart-wrap, .bfb-header.talking .bfb-heart-wrap { animation: bfb-head-bob-talk 0.92s infinite ease-in-out; }
+
+/* subtle head bob while talking */
+.bfb-launcher.talking .bfb-avatar .bfb-heart-wrap, .bfb-header.talking .bfb-avatar .bfb-heart-wrap { animation: bfb-float 3s ease-in-out infinite, bfb-headbob 0.84s ease-in-out infinite; }
+@keyframes bfb-headbob { 0%,100% { transform: translateY(-4px) rotate(0deg); } 50% { transform: translateY(-1px) rotate(-0.6deg); } }
+
+/* pause idle micro-animations while talking to avoid clutter */
+.bfb-launcher.talking .eye, .bfb-header.talking .eye { animation: none; }
+.bfb-launcher.talking .brow, .bfb-header.talking .brow { animation: none; }
+.bfb-launcher.talking .mouth, .bfb-header.talking .mouth { animation-name: bfb-talk; }
+
+/* speaking facial animations */
+@keyframes bfb-squint { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.7); } }
+@keyframes bfb-brow-speak { 0%,100% { transform: translateY(0) rotate(var(--brow-rot, 0deg)); } 50% { transform: translateY(-1px) rotate(calc(var(--brow-rot, 0deg) * 1.2)); } }
+@keyframes bfb-cheek { 0%,100% { opacity: 0.28; transform: scale(1); } 50% { opacity: 0.38; transform: scale(1.06); } }
+.bfb-launcher.talking .bfb-face-overlay .eye, .bfb-header.talking .bfb-face-overlay .eye { animation: bfb-squint var(--talk-dur, 0.46s) infinite ease-in-out; }
+.bfb-launcher.talking .brow.left, .bfb-header.talking .brow.left { --brow-rot: -8deg; animation: bfb-brow-speak 0.92s infinite ease-in-out; }
+.bfb-launcher.talking .brow.right, .bfb-header.talking .brow.right { --brow-rot: 8deg; animation: bfb-brow-speak 0.92s infinite ease-in-out; }
+.bfb-launcher.talking .bfb-face-overlay::before, .bfb-header.talking .bfb-face-overlay::before,
+.bfb-launcher.talking .bfb-face-overlay::after, .bfb-header.talking .bfb-face-overlay::after { animation: bfb-cheek 0.92s infinite ease-in-out; }
+
+/* heart beat action */
+.bfb-launcher.greet .bfb-heart-svg { animation: bfb-beat 0.7s ease-in-out 2; }
+@keyframes bfb-beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+/* hover polish */
+.bfb-launcher:hover .bfb-heart-svg { transform: translateY(-1px) scale(1.02); }
+/* subtle 3D tilt driven by vars */
+.bfb-heart-wrap.tilt .bfb-heart-svg { transform: rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)); transform-style: preserve-3d; transition: transform 80ms linear; }
+.bfb-heart-wrap.tilt .bfb-face-overlay { transform: translateX(-2%) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)); transform-style: preserve-3d; transition: transform 80ms linear; }
+
+/* wink animation */
+.bfb-heart-wrap.wink .eye.right { transform: scaleY(0.15); transition: transform 120ms ease; }
+.bfb-heart-wrap.wink .eye.right::after { opacity: 0; }
+
+/* floating animation for header heart */
+@keyframes bfb-float { 0%,100% { transform: translateY(-4px); } 50% { transform: translateY(2px); } }
+
+.bfb-panel {
+  width: 380px; 
+  height: 560px; 
+  background: #ffffff; 
+  border: 1px solid #e5e7eb; 
+  border-radius: 20px; 
+  overflow: visible;
+  box-shadow: 0 20px 40px rgba(2,6,23,0.12), 0 8px 16px rgba(2,6,23,0.08);
+  transform-origin: bottom right; 
+  opacity: 1;
+  backdrop-filter: blur(10px);
+}
+.bfb-panel.open { animation: bfb-pop .16s ease-out; }
+@keyframes bfb-pop { from { transform: scale(0.98); opacity: 0.9; } to { transform: scale(1); opacity: 1; } }
+
+.bfb-header {
+  color: #0f172a; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
+  border-bottom: 1px solid #f1f5f9;
+  height: 64px; 
+  gap: 12px; 
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+.bfb-header { overflow: visible; }
+/* header bottom shadow disabled as requested */
+.bfb-header::after { content: ""; display: none; }
+.bfb-head-left { display:flex; align-items:center; gap:10px; }
+.bfb-avatar { 
+  width: 44px; 
+  height: 44px; 
+  border-radius: 14px; 
+  background: transparent; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+  overflow: visible;
+}
+/* soft oval shadow under the heart in header */
+.bfb-avatar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(2,6,23,0.20) 0%, rgba(2,6,23,0.08) 35%, rgba(2,6,23,0) 52%);
+  filter: blur(2.5px);
+  z-index: 1;
+  pointer-events: none;
+}
+.bfb-avatar .bfb-face { width:24px; height:24px; }
+.bfb-avatar .bfb-face .eye { width:4px; height:4px; top:7px; }
+.bfb-avatar .bfb-face .mouth { width:10px; height:5px; bottom:6px; }
+.bfb-head-text { display:flex; flex-direction:column; line-height:1.1; }
+.bfb-title { 
+  font-weight: 700; 
+  font-size: 16px; 
+  color: #0f172a; 
+  letter-spacing: -0.025em;
+}
+.bfb-status { 
+  font-size: 13px; 
+  opacity: 0.9; 
+  color: #64748b; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  font-weight: 500;
+}
+.bfb-dot { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+  background: linear-gradient(135deg, #22c55e, #16a34a); 
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2), 0 2px 4px rgba(34,197,94,0.3); 
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.bfb-close { 
+  border: none; 
+  background: transparent; 
+  color: #64748b; 
+  font-size: 18px; 
+  cursor: pointer; 
+  opacity: 0.8;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.bfb-close:hover { 
+  opacity: 1;
+  background: rgba(248,250,252,0.8);
+  color: #0f172a;
+}
+
+.bfb-iframe { 
+  width: 100%; 
+  height: calc(100% - 64px); 
+  border: 0; 
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+}
+
+/* glossy highlight on the heart */
+.bfb-heart-wrap::before { content:""; display:none !important; }
+
+@media (max-width: 480px) {
+  .bfb-wrap { right: 12px; bottom: 12px; }
+  .bfb-panel { width: 92vw; height: 70vh; border-radius: 14px; }
+}

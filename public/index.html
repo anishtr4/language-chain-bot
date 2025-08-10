@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bubble FAQ Bot</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Bubble FAQ Bot</h1>
+      <a href="/admin.html">Admin</a>
+    </header>
+
+    <!-- Landing content (visible on main page) -->
+    <main class="landing">
+      <!-- Hero -->
+      <section class="hero" style="text-align:center; padding: 28px 12px 8px;">
+        <h2 style="margin:0; font-size: 32px; line-height:1.2; color: var(--text);">Delightful AI FAQ for your website</h2>
+        <p style="margin:10px 0 0; color: var(--muted); max-width:740px; margin-inline:auto;">
+          Add a friendly chat assistant that answers product questions 24/7 using your own knowledge base.
+          Click the chat bubble to try it.
+        </p>
+        <div style="margin-top:16px; display:flex; gap:10px; justify-content:center;">
+          <a href="#how" style="background:linear-gradient(135deg, var(--primary), var(--primary-2)); color:#fff; padding:10px 14px; border-radius:12px; text-decoration:none; box-shadow:0 8px 16px rgba(37,99,235,0.2);">How it works</a>
+          <a href="/admin.html" style="border:1px solid var(--border); color:var(--text-2); padding:10px 14px; border-radius:12px; text-decoration:none; background:#fff;">Open Admin</a>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="features" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:22px;">
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px;">
+          <h3 style="margin:0 0 6px; font-size:16px;">Bring Your Own Knowledge</h3>
+          <p style="margin:0; color:var(--muted);">Import PDFs and URLs in the Admin. Answers stay grounded to your content.</p>
+        </div>
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px;">
+          <h3 style="margin:0 0 6px; font-size:16px;">Natural, Helpful Answers</h3>
+          <p style="margin:0; color:var(--muted);">Fast, conversational responses with citations where available.</p>
+        </div>
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px;">
+          <h3 style="margin:0 0 6px; font-size:16px;">Works Everywhere</h3>
+          <p style="margin:0; color:var(--muted);">Simple widget you can drop into any site. Responsive and accessible.</p>
+        </div>
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px;">
+          <h3 style="margin:0 0 6px; font-size:16px;">Feedback & Chips</h3>
+          <p style="margin:0; color:var(--muted);">Users can rate answers and use quick suggestions to continue.</p>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how" class="how" style="margin-top:26px;">
+        <h3 style="margin:0 0 10px;">How it works</h3>
+        <ol style="padding-left:18px; color:var(--text-2);">
+          <li>Open <a href="/admin.html">Admin</a> and import your docs (PDFs, links).</li>
+          <li>Embed the chat widget in your site (already on this page).</li>
+          <li>Users ask questions; the assistant answers from your knowledge base.</li>
+        </ol>
+      </section>
+
+      <!-- CTA strip -->
+      <section class="cta" style="margin-top:22px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:14px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div>
+          <div style="font-weight:600; color:var(--text-2);">Ready to add your content?</div>
+          <div style="color:var(--muted); font-size:14px;">Go to Admin and start importing PDFs or links.</div>
+        </div>
+        <a href="/admin.html" style="background:linear-gradient(135deg, var(--primary), var(--primary-2)); color:#fff; padding:10px 14px; border-radius:12px; text-decoration:none; white-space:nowrap;">Open Admin</a>
+      </section>
+
+      <!-- Footer -->
+      <footer style="margin-top:24px; text-align:center; color:var(--muted); font-size:12px;">
+        © <span id="year"></span> Bubble FAQ Bot
+      </footer>
+    </main>
+
+    <!-- Chat UI (only visible in embed mode for widget iframe) -->
+    <main class="chat" style="display: none;">
+      <div id="messages" class="messages"></div>
+      <form id="chat-form" class="input-row">
+        <input id="message" type="text" placeholder="Ask a question from the knowledge base..." autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+      <div id="hint" class="hint">Answers are grounded in your FAQ knowledge base. Import more content from the Admin.</div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+  <script src="/app.js"></script>
+  <!-- Floating Chat Widget -->
+  <link rel="stylesheet" href="/widget.css" />
+  <script>
+    window.BubbleFAQ = {
+      title: 'Chat with us',
+      primary: '#2563eb',
+      zIndex: 999999,
+      position: { bottom: 20, right: 20 },
+      width: 420,
+      height: 620,
+      openByDefault: false
+    };
+  </script>
+  <script src="/widget.js" defer></script>
+</body>
+</html>

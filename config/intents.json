@@ -1,0 +1,120 @@
+{
+  "default": {
+    "policy": [
+      {
+        "label": "file_recovery",
+        "patterns": ["\\blost\\b", "\\brecover\\b", "\\bdeleted?\\b", "find my (file|document)", "missing (file|document)"],
+        "examples": [
+          "I lost my document",
+          "recover deleted file",
+          "where is my upload",
+          "can I restore my file"
+        ],
+        "template": "Files are retained for up to {{window}} for download. After the retention period or if you delete a file, it is removed from our systems and cannot be recovered. Please re-upload the original."
+      },
+      {
+        "label": "supportplus_enrollment",
+        "patterns": [
+          "enrolled into a service",
+          "not showing up in my (personalized )?dashboard",
+          "enroll into an additional service",
+          "unenroll from a service"
+        ],
+        "examples": [
+          "I enrolled but it isn't on my dashboard",
+          "How can I enroll into an additional service?",
+          "How can I unenroll from a service?"
+        ],
+        "template": "For Amgen SupportPlus enrollment management, use your personalized dashboard to add or remove services. If items are missing, refresh and follow the steps on the SupportPlus FAQ page."
+      },
+      {
+        "label": "supportplus_dashboard_issues",
+        "patterns": [
+          "mismatch in my user information",
+          "update (my )?user information",
+          "reminder dates are incorrect",
+          "encounter technical issues on my (personalized )?dashboard"
+        ],
+        "examples": [
+          "How can I change my user info?",
+          "My reminder dates are wrong",
+          "I have technical issues on my dashboard"
+        ],
+        "template": "Use account settings to update profile and reminders. For troubleshooting steps, see the SupportPlus FAQ."
+      },
+      {
+        "label": "supportplus_copay_print",
+        "patterns": [
+          "unable to print (my )?repatha(®)? co-pay card",
+          "print my repatha co[- ]?pay card"
+        ],
+        "examples": [
+          "I cannot print my Repatha Co-Pay Card"
+        ],
+        "template": "Try a different browser and printer settings. If issues persist, follow the steps on the SupportPlus FAQ page."
+      },
+      {
+        "label": "supportplus_security_privacy",
+        "patterns": [
+          "is my personal and medical information secure",
+          "will my doctor’?[s] office have access",
+          "what information is available via my (personalized )?dashboard"
+        ],
+        "examples": [
+          "Is my information secure on my dashboard?",
+          "Will my doctor's office have access?",
+          "What info is available via my dashboard?"
+        ],
+        "template": "Refer to the SupportPlus site for security and access policies. Review the SupportPlus FAQ and discuss sharing options with your healthcare provider."
+      },
+      {
+        "label": "supportplus_live_support",
+        "patterns": [
+          "connect with live support",
+          "questions regarding the repatha co[- ]?pay card",
+          "amgen nurse partners"
+        ],
+        "examples": [
+          "How do I connect with live support?"
+        ],
+        "template": "Use the contact options on the SupportPlus FAQ page to reach live support for Co-Pay Card or Amgen Nurse Partners."
+      },
+      {
+        "label": "supportplus_caregiver_access",
+        "patterns": [
+          "allow access to my (personalized )?dashboard to my (spouse|caregiver)"
+        ],
+        "examples": [
+          "Can my spouse access my dashboard?"
+        ],
+        "template": "See the SupportPlus FAQ for guidance on caregiver or proxy access options."
+      }
+    ],
+    "adverse": [
+      {
+        "label": "self_harm",
+        "patterns": [
+          "\\bsuicide\\b",
+          "\\bkill myself\\b",
+          "\\bhurt myself\\b",
+          "\\blost my mind\\b",
+          "\\bpanic attack\\b",
+          "\\banxiety attack\\b",
+          "\\bself[- ]?harm\\b",
+          "\\bsuicidal\\b"
+        ],
+        "examples": ["I want to end my life", "I might hurt myself"],
+        "severity": "high"
+      }
+    ]
+  },
+  "productA": {
+    "policy": [
+      {
+        "label": "file_recovery",
+        "patterns": ["\\blost\\b", "\\brecover\\b", "\\bdeleted?\\b"],
+        "examples": ["recover my processed PDF", "lost my conversion"]
+      }
+    ]
+  }
+}

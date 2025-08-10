@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Bubble FAQ Bot</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FAQ Admin</h1>
+      <nav>
+        <a href="/">Chat</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="upload">
+        <input type="file" id="file" />
+        <label><input type="checkbox" id="append" /> Append</label>
+        <button id="importBtn">Import JSON/CSV</button>
+        <button id="importPdfBtn">Import PDF</button>
+        <input type="text" id="urlInput" placeholder="https://example.com/help" style="flex:1; min-width:200px" />
+        <button id="importUrlBtn">Import URL</button>
+        <button id="exportBtn" class="secondary">Export JSON</button>
+        <button id="saveBtn">Save All</button>
+      </div>
+
+      <table class="table" id="faqTable">
+        <thead>
+          <tr><th>Title</th><th>Question</th><th>Answer</th><th>Tags</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button id="addRow">Add FAQ</button>
+    </main>
+  </div>
+
+  <script src="/admin.js"></script>
+</body>
+</html>

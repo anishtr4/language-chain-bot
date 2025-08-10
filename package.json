@@ -1,0 +1,41 @@
+{
+  "name": "bubble-faq-bot",
+  "version": "1.0.0",
+  "description": "FAQ chatbot with RAG and OpenAI integration (Express-based)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js",
+    "build-index": "node scripts/build_index.js"
+  },
+  "keywords": [
+    "chatbot",
+    "faq",
+    "rag",
+    "openai",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "0.21.0",
+    "@langchain/google-genai": "^0.2.16",
+    "cheerio": "1.0.0-rc.12",
+    "cosine-similarity": "1.0.0",
+    "csv-parse": "5.5.6",
+    "csv-stringify": "6.5.2",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "langchain": "^0.3.30",
+    "multer": "1.4.5-lts.1",
+    "nanoid": "^5.1.5",
+    "natural": "^8.1.0",
+    "node-fetch": "3.3.2",
+    "node-nlp": "^5.0.0-alpha.5",
+    "openai": "4.57.0",
+    "pdf-parse": "1.1.1",
+    "pino": "^9.8.0",
+    "pino-http": "^10.5.0"
+  }
+}
